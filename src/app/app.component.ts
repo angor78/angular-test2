@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
+
+interface IUser {
+  age: number
+  name: string
+}
 
 @Component({
   selector: 'app-root',
@@ -7,4 +13,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-test2';
+  user: IUser = {
+    age: 32,
+    name: 'Ivan'
+  }
 }
