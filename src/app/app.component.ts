@@ -20,6 +20,8 @@ export class AppComponent {
   isAppLoading = true
   text = ''
   text2 = ''
+  nums = [1, 2, 3, 4, 5,1]
+  isDuplicate = false
 
   constructor() {
     setTimeout(() => {
@@ -37,5 +39,10 @@ export class AppComponent {
 
   changeText2Handler($event: Event) {
     this.text2 = ($event.currentTarget as HTMLInputElement).value
+  }
+
+  checkIsDuplicate() {
+    let seen: number[] = []
+    this.nums.forEach(num=>!seen.includes(num)?seen.push(num):this.isDuplicate=true)
   }
 }
