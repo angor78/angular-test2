@@ -1,17 +1,2 @@
-<div><h1>{{title}}</h1></div>
-<hr>
-<div>{{user.name}}</div>
-<div>{{user.age}}</div>
-<hr>
-<button [disabled]="isAppLoading">Send</button>
-<hr>
-<button (click)="changeTitleHandler()">Change title</button>
-<hr>
-<h2>{{text}}</h2>
-<input type="text" (input)="changeTextHandler($event)">
-<hr>
-<h2>{{text2}}</h2>
-<input type="text" (keyup.enter)="changeText2Handler($event)">
-<hr>
-<h1>{{isDuplicate}}</h1>
-<button (click)="checkIsDuplicate()">Check</button>
+<h1>{{title}}</h1>
+
