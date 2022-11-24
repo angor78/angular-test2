@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Grade} from "./child/child.component";
 
 @Component({
   selector: 'app-parent',
@@ -7,8 +8,10 @@ import {Component} from '@angular/core';
 })
 export class ParentComponent {
   math?: number
+  rus?: number
 
-  getGrade(value: number) {
-    this.math = value
+  getGrade(value: Grade) {
+    this.math = value.math
+    this.rus = value.rus
   }
 }
