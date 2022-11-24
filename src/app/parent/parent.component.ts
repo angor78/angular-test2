@@ -6,5 +6,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent {
+  math?: number
 
+  getGrade(value: number) {
+    this.math = value
+  }
 }
