@@ -1,5 +1,6 @@
 <h1>Parent: </h1>
+<div>{{grades | json}}</div>
 
-<app-child></app-child>
+<app-child (sendGradeEvent)="getGrade($event )"></app-child>
 
 
