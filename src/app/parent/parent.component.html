@@ -1,6 +1,12 @@
 <h1>Parent: </h1>
 <div>{{grades | json}}</div>
+<hr>
+<h1>{{clumb}}</h1>
 
+<hr>
+<input type="text" [(ngModel)]="clumb">
+<button (click)="countClumb()">count</button>
+<hr>
 <app-child (sendGradeEvent)="getGrade($event )"></app-child>
 
 
