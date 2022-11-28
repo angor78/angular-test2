@@ -6,5 +6,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent {
+  grades = ['math=5', 'rus=4']
 
+  getGrade(grade: string) {
+    this.grades.push(grade)
+  }
 }

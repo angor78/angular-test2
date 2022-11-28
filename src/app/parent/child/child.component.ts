@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,5 +7,9 @@ import {Component} from '@angular/core';
 })
 
 export class ChildComponent {
-
+  @Output() sendEventGrade = new EventEmitter<string>()
+  grade:string=''
+  sendGradeHandler() {
+    this.sendEventGrade.emit(this.grade)
+  }
 }

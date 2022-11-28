@@ -1,4 +1,6 @@
 <h1>Parent: </h1>
-<app-child ></app-child>
+<div>{{grades|json}}</div>
+<div *ngFor="let el of grades; index as i">{{i}}--{{el}}</div>
+<app-child (sendEventGrade)="getGrade($event)"></app-child>
 
 
