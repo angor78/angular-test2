@@ -4,13 +4,14 @@
 
 <div *ngIf="isLoading"><h1>Loading...</h1></div>
 
-
-<div *ngFor="let lesson of Lessons">
-  <h2>{{lesson.title}}</h2>
-  <div *ngFor="let grade of lesson.weekGrades">
-    <h3>{{grade.gradeItem}}</h3>
+<ng-container *ngIf="!isLoading">
+  <div *ngFor="let lesson of Lessons">
+    <h2>{{lesson.title}}</h2>
+    <div *ngFor="let grade of lesson.weekGrades">
+      <h3>{{grade.gradeItem}}</h3>
+    </div>
   </div>
-</div>
+</ng-container>
 
 
 <!--<app-child (sendEventGrade)="getGrade($event)"></app-child>-->
