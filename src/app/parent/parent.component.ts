@@ -6,9 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent {
-  isSuccess = true
-  constructor() {
-    setTimeout(()=>{this.isSuccess=false},3000)
 
-  }
 }
