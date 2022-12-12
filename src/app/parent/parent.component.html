@@ -1,19 +1,9 @@
-<h1>Parent: </h1>
-<!--<div>{{grades|json}}</div>-->
-<!--<div *ngFor="let el of grades; index as i">{{i}}&#45;&#45;{{el}}</div>-->
-
-<div *ngIf="isLoading"><h1>Loading...</h1></div>
-
-<ng-container *ngIf="!isLoading">
-  <div *ngFor="let lesson of Lessons">
-    <h2>{{lesson.title}}</h2>
-    <div *ngFor="let grade of lesson.weekGrades">
-      <h3>{{grade.gradeItem}}</h3>
-    </div>
-  </div>
-</ng-container>
+<input type="text" [(ngModel)]="value">
 
 
-<!--<app-child (sendEventGrade)="getGrade($event)"></app-child>-->
-
-
+<div [ngSwitch]="value">
+  <div *ngSwitchCase="'1'">One</div>
+  <div *ngSwitchCase="'2'">Two</div>
+  <div *ngSwitchCase="'3'">Three</div>
+  <div *ngSwitchDefault class="error">Error</div>
+</div>
