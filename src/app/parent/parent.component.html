@@ -1,15 +1,1 @@
-<h1 [ngStyle]="{'color': 'blue'}">Lorem ipsum dolor sit amet.</h1>
 
-
-<div *ngFor="let fruit of fruits">
-  <div [ngClass]="fruit.id%2===0?'error':'success'"
-       [ngStyle]="fruit.price>50?{'font-size':'44px'}:{'font-size':'22px'}">
-    {{fruit.name}}--------{{fruit.price}}
-  </div>
-</div>
-<div *ngFor="let fruit of fruits,even as even,odd as odd">
-  <div *ngIf="fruit.price<40"
-       [ngClass]="{success:even, error: odd,bigPrice:fruit.price<50}">
-    {{fruit.name}}--------{{fruit.price}}
-  </div>
-</div>
