@@ -4,7 +4,7 @@ import {ValueService} from "../../services/value.service";
 @Component({
   selector: 'app-comp-a',
   templateUrl: './comp-a.component.html',
-  styleUrls: ['./comp-a.component.css']
+  styleUrls: ['./comp-a.component.css'],
 })
 export class CompAComponent implements OnInit {
   value = 0
@@ -16,4 +16,7 @@ export class CompAComponent implements OnInit {
     this.value = this.valueService.value
   }
 
+  decHandler() {
+    this.valueService.dec()
+  }
 }
