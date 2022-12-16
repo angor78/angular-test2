@@ -13,7 +13,7 @@ export class CompBComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.value = this.valueService.value
+    this.valueService.value$.subscribe((value)=>{this.value=value})
   }
 
   addHandler() {

@@ -13,7 +13,9 @@ export class CompAComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.value = this.valueService.value
+    this.valueService.value$.subscribe((value) => {
+      this.value = value
+    })
   }
 
   decHandler() {
