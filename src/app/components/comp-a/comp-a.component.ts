@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ValueService} from "../../services/value.service";
 import {Observable} from "rxjs";
+import {CoolLoggerService} from "../../services/cool-logger.service";
 
 @Component({
   selector: 'app-comp-a',
@@ -10,7 +11,8 @@ import {Observable} from "rxjs";
 export class CompAComponent implements OnInit {
   value$ = new Observable()
 
-  constructor(private valueService: ValueService) {
+  constructor(private valueService: ValueService,
+              private coolLoggerServer:CoolLoggerService) {
   }
 
   ngOnInit(): void {
@@ -19,5 +21,6 @@ export class CompAComponent implements OnInit {
 
   decHandler() {
     this.valueService.dec()
+    this.coolLoggerServer.log('dec','error')
   }
 }

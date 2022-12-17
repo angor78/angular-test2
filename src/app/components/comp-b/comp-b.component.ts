@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ValueService} from "../../services/value.service";
 import {Observable} from "rxjs";
+import {CoolLoggerService} from "../../services/cool-logger.service";
 
 @Component({
   selector: 'app-comp-b',
@@ -10,14 +11,16 @@ import {Observable} from "rxjs";
 export class CompBComponent implements OnInit {
   value$ = new Observable()
 
-  constructor(private valueService: ValueService) {
+  constructor(private valueService: ValueService,
+              private coolLoggerService: CoolLoggerService) {
   }
 
   ngOnInit(): void {
-    this.value$=this.valueService.value$
+    this.value$ = this.valueService.value$
   }
 
   addHandler() {
     this.valueService.add()
+    this.coolLoggerService.log('add','success')
   }
 }
