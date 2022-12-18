@@ -10,6 +10,9 @@ import {CoolLoggerService} from "../../services/cool-logger.service";
 })
 export class CompBComponent implements OnInit {
   value$ = new Observable()
+  nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+  maxSum = this.nums[0]
+  currentSum = this.nums[0]
 
   constructor(private valueService: ValueService,
               private coolLoggerService: CoolLoggerService) {
@@ -21,6 +24,13 @@ export class CompBComponent implements OnInit {
 
   addHandler() {
     this.valueService.add()
-    this.coolLoggerService.log('add','success')
+    this.coolLoggerService.log('add', 'success')
+  }
+
+  getSubArrayHandler() {
+    this.nums.forEach((num) => {
+      this.currentSum = Math.max(this.currentSum + num, num)
+      this.maxSum = Math.max(this.currentSum, this.maxSum)
+    })
   }
 }
