@@ -10,13 +10,17 @@ import {CoolLoggerService} from "../../services/cool-logger.service";
 })
 export class CompBComponent implements OnInit {
   value$ = new Observable()
+
+
   constructor(private valueService: ValueService,
-              private coolLoggerService: CoolLoggerService) {
+              private coolLoggerService: CoolLoggerService,
+             ) {
   }
 
   ngOnInit(): void {
     this.value$ = this.valueService.value$
   }
+
 
   addHandler() {
     this.valueService.add()
