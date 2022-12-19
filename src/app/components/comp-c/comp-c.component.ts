@@ -15,6 +15,10 @@ interface Todo {
 })
 export class CompCComponent implements OnInit {
   todos: Todo[] = []
+  httpOptions = {
+    withCredentials: true,
+    headers: {'api-key': 'bd4ae310-899e-41ab-b129-c57668c4e43e'}
+  }
 
   constructor(private http: HttpClient) {
   }
@@ -26,12 +30,25 @@ export class CompCComponent implements OnInit {
 
   getTodos() {
     this.http.get<Todo[]>('https://social-network.samuraijs.com/api/1.1/todo-lists',
-      {
-        withCredentials: true,
-        headers: {"API-KEY": "bd4ae310-899e-41ab-b129-c57668c4e43e"},
-      }
-    ).subscribe((res: Todo[]) => {
+      this.httpOptions).subscribe((res: Todo[]) => {
       this.todos = res
+    })
+  }
+
+  addTodoHandler() {
+    this.http.post('https://social-network.samuraijs.com/api/1.1/todo-lists',
+      {title: 'Angular1'}, this.httpOptions).subscribe((res: any) => {
+        this.todos.unshift(res.data.item)
+      }
+    )
+  }
+
+  removeTodoHandler(todoId: string) {
+    this.http.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`,
+      this.httpOptions).subscribe(() => {
+      this.todos = this.todos.filter((el) => {
+       return el.id !== todoId
+      })
     })
   }
 }

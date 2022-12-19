@@ -1,5 +1,8 @@
 <p>comp-c works!</p>
 <div *ngFor="let todo of todos">
-  <div>{{todo.title}}----{{todo.addedDate}}</div>
-</div>
+  <div>{{todo.title}}
+    <button (click)="removeTodoHandler(todo.id)">Remove</button>
+  </div>
 
+</div>
+<button (click)="addTodoHandler()">Add todo</button>
