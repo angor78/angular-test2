@@ -1,8 +1,13 @@
 <p>comp-c works!</p>
-<div *ngFor="let todo of todos">
-  <div>{{todo.title}}
-    <button (click)="removeTodoHandler(todo.id)">Remove</button>
-  </div>
+<h1 *ngIf="!!error">{{error}}</h1>
 
+<div *ngIf="!error">
+  <div *ngFor="let todo of todos">
+    <div>{{todo.title}}
+      <button (click)="removeTodoHandler(todo.id)">Remove</button>
+    </div>
+
+  </div>
+  <button (click)="addTodoHandler()">Add todo</button>
 </div>
-<button (click)="addTodoHandler()">Add todo</button>
+
