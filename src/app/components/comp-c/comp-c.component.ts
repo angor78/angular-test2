@@ -11,6 +11,7 @@ import {Observable} from "rxjs";
 export class CompCComponent implements OnInit {
   error: string = ''
   todos$!: Observable<Todo[]>
+  title:string=''
 
   constructor(private todosService: TodosService) {
   }
@@ -21,6 +22,7 @@ export class CompCComponent implements OnInit {
     this.todos$ = this.todosService.todos$
 
     this.getTodos()
+
   }
 
   getTodos() {
@@ -28,7 +30,7 @@ export class CompCComponent implements OnInit {
   }
 
   addTodoHandler() {
-    this.todosService.addTodo()
+    this.todosService.addTodo(this.title)
   }
 
   removeTodoHandler(todoId: string) {

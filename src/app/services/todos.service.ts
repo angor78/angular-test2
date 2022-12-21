@@ -39,9 +39,9 @@ export class TodosService {
     })
   }
 
-  addTodo() {
+  addTodo(title:string) {
     this.http.post<BaseResponse<{ item: Todo }>>(`${environment.baseUrl}todo-lists`,
-      {title: 'Angular1'}, this.httpOptions)
+      {title: title}, this.httpOptions)
       .pipe(map((res: BaseResponse<{ item: Todo }>) => {
         return [res.data.item, ...this.todos$.getValue()]
       }))
