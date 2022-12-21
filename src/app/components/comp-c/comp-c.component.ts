@@ -1,7 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BaseResponse, Todo, TodosService} from "../../services/todos.service";
-import {HttpErrorResponse} from "@angular/common/http";
-import {Subscription} from "rxjs";
+import {Component, OnInit} from '@angular/core';
+import {Todo, TodosService} from "../../services/todos.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -9,49 +8,31 @@ import {Subscription} from "rxjs";
   templateUrl: './comp-c.component.html',
   styleUrls: ['./comp-c.component.css']
 })
-export class CompCComponent implements OnInit, OnDestroy {
-  todos: Todo[] = []
+export class CompCComponent implements OnInit {
   error: string = ''
-  subscriptions: Subscription = new Subscription()
+  todos$!: Observable<Todo[]>
 
   constructor(private todosService: TodosService) {
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe()
-  }
 
   ngOnInit(): void {
+    //Subscribe
+    this.todos$ = this.todosService.todos$
+
     this.getTodos()
   }
 
   getTodos() {
-    this.subscriptions.add(this.todosService.getTodos().subscribe(
-      {
-        next: (res: Todo[]) => {
-          this.todos = res
-        },
-        error: (error: HttpErrorResponse) => {
-          this.error = error.message
-        }
-      })
-    )
+    return this.todosService.getTodos()
   }
 
   addTodoHandler() {
-    this.subscriptions.add(this.todosService.addTodo().subscribe((res: BaseResponse<{ item: Todo }>) => {
-          this.todos.unshift(res.data.item)
-        }
-      )
-    )
+    this.todosService.addTodo()
   }
 
   removeTodoHandler(todoId: string) {
-    this.subscriptions.add(this.todosService.removeTodo(todoId).subscribe(() => {
-        this.todos = this.todos.filter((el) => {
-          return el.id !== todoId
-        })
-      })
-    )
+    this.todosService.removeTodo(todoId)
   }
 }
+
