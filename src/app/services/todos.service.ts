@@ -37,10 +37,7 @@ export class TodosService {
   getTodos() {
     this.http.get<Todo[]>(`${environment.baseUrl}todo-lists`,
       this.httpOptions)
-      .pipe(catchError((err: HttpErrorResponse) => {
-        this.coolLoggerService.log(err.message, 'error')
-        return EMPTY
-      }))
+      .pipe(catchError(this.errorHandler.bind(this)))
       .subscribe((res) => {
         this.todos$.next(res)
       })
@@ -49,9 +46,11 @@ export class TodosService {
   addTodo(title: string) {
     this.http.post<BaseResponse<{ item: Todo }>>(`${environment.baseUrl}todo-lists`,
       {title: title}, this.httpOptions)
-      .pipe(map((res: BaseResponse<{ item: Todo }>) => {
-        return [res.data.item, ...this.todos$.getValue()]
-      }))
+      .pipe(
+        catchError(this.errorHandler.bind(this)),
+        map((res: BaseResponse<{ item: Todo }>) => {
+          return [res.data.item, ...this.todos$.getValue()]
+        }))
       .subscribe((todos: Todo[]) => {
         this.todos$.next(todos)
       })
@@ -61,10 +60,17 @@ export class TodosService {
   removeTodo(todoId: string) {
     this.http.delete<BaseResponse>(`${environment.baseUrl}todo-lists/${todoId}`,
       this.httpOptions)
-      .pipe(map(() => {
+      .pipe(
+        catchError(this.errorHandler.bind(this)),
+        map(() => {
         return this.todos$.getValue().filter(el => el.id !== todoId)
       })).subscribe((todos: Todo[]) => {
       this.todos$.next(todos)
     })
+  }
+
+  private errorHandler(err: HttpErrorResponse) {
+    this.coolLoggerService.log(err.message, 'error')
+    return EMPTY
   }
 }
