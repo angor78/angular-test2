@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {BehaviorSubject, map} from "rxjs";
+import {BehaviorSubject, catchError, EMPTY, map} from "rxjs";
+import {CoolLoggerService} from "./cool-logger.service";
 
 export interface Todo {
   addedDate: string
@@ -29,17 +30,23 @@ export class TodosService {
     headers: {'api-key': environment.apiKey}
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private coolLoggerService: CoolLoggerService) {
   }
 
   getTodos() {
-    this.http.get<Todo[]>(`${environment.baseUrl}todo-lists`,
-      this.httpOptions).subscribe((res) => {
-      this.todos$.next(res)
-    })
+    this.http.get<Todo[]>(`${environment.baseUrl}todo-lists1`,
+      this.httpOptions)
+      .pipe(catchError((err: HttpErrorResponse) => {
+        this.coolLoggerService.log(err.message, 'error')
+        return EMPTY
+      }))
+      .subscribe((res) => {
+        this.todos$.next(res)
+      })
   }
 
-  addTodo(title:string) {
+  addTodo(title: string) {
     this.http.post<BaseResponse<{ item: Todo }>>(`${environment.baseUrl}todo-lists`,
       {title: title}, this.httpOptions)
       .pipe(map((res: BaseResponse<{ item: Todo }>) => {
