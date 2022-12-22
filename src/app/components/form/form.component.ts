@@ -10,8 +10,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class FormComponent implements OnInit {
 
   loginForm = new FormGroup({
-    email: new FormControl,
-    password: new FormControl
+    email: new FormControl<any>(''),
+    password: new FormControl<any>('')
   })
 
 
