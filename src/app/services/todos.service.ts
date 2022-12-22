@@ -35,7 +35,7 @@ export class TodosService {
   }
 
   getTodos() {
-    this.http.get<Todo[]>(`${environment.baseUrl}todo-lists1`,
+    this.http.get<Todo[]>(`${environment.baseUrl}todo-lists`,
       this.httpOptions)
       .pipe(catchError((err: HttpErrorResponse) => {
         this.coolLoggerService.log(err.message, 'error')
