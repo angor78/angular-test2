@@ -16,13 +16,17 @@ export class FormComponent implements OnInit {
     password: new FormControl<any>('')
   })
 
-
   constructor() {
   }
 
   ngOnInit(): void {
   }
-  get email(){return this.loginForm.get('email')}
+
+  get email() {
+    return this.loginForm.get('email')
+  }
+
+
   onSubmit() {
     alert('User' + ' ' + this.loginForm.value.email + ' ' + 'login')
   }
