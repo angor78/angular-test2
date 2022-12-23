@@ -12,7 +12,7 @@ export class FormComponent implements OnInit {
   loginForm = new FormGroup({
     email: new FormControl<any>('',
       [Validators.required,
-        Validators.email]),
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,5}')]),
     password: new FormControl<any>('')
   })
 
