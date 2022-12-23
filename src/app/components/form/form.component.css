@@ -1,3 +1,15 @@
-.error{
+.error {
   color: red;
+}
+
+.inputError {
+  border: 2px solid red;
+  background-color: rgba(214, 71, 71, 0.19);
+  border-radius: 2px;
+}
+
+.inputSuccess {
+  border: 2px solid #0dff00;
+  background-color: rgba(199, 229, 193, 0.31);
+  border-radius: 2px;
 }

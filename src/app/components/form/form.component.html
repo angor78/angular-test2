@@ -1,9 +1,12 @@
 <p>form works!</p>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <input type="email" formControlName="email" placeholder="email" >
+  <input type="email" formControlName="email" placeholder="email"
+         [ngClass]="{
+         'inputError': email!.invalid &&(email!.dirty||email!.touched),
+          'inputSuccess': email!.valid}">
   <div *ngIf="email!.invalid &&(email!.dirty||email!.touched)" class="error">
-   <div *ngIf="email!.errors?.['required']">Email is required</div>
-   <div *ngIf="email!.errors?.['pattern']">Email is not valid</div>
+    <div *ngIf="email!.errors?.['required']">Email is required</div>
+    <div *ngIf="email!.errors?.['pattern']">Email is not valid</div>
   </div>
   <input type="password" formControlName="password" placeholder="password">
   <button [disabled]="loginForm.invalid" type="submit">send</button>
