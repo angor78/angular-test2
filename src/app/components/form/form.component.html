@@ -1,8 +1,11 @@
 <p>form works!</p>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <input type="email" formControlName="email" placeholder="email">
+  <div *ngIf="email!.invalid &&(email!.dirty||email!.touched)" class="error">
+    error
+  </div>
   <input type="password" formControlName="password" placeholder="password">
-    <button type="submit">send</button>
+  <button [disabled]="loginForm.invalid" type="submit">send</button>
 </form>
 <h1>email:{{loginForm.value.email}}</h1>
 <h1>password:{{loginForm.value.password}}</h1>
