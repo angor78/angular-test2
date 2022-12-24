@@ -5,13 +5,15 @@ import {LoginComponent} from "./components/login/login.component";
 import {UsersComponent} from "./components/users/users.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {TodosComponent} from "./components/todos/todos.component";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'users', component: UsersComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'todos', component: TodosComponent}
+  {path: 'todos', component: TodosComponent},
+  {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
