@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'todos', component: TodosComponent},
-  {path: '**', component: NotFoundComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'},
 ];
 
 @NgModule({
