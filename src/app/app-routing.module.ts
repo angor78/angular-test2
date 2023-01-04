@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile/:userId', component: ProfileComponent},
   {path: 'todos', component: TodosComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'},
