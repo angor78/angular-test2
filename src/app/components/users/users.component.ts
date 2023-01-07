@@ -31,9 +31,16 @@ export class UsersComponent implements OnInit {
   nextUsersHandler() {
     const page = Number(this.route.snapshot.queryParamMap.get('page'))
     const nextPage = page ? page + 1 : 2
-    this.router.navigateByUrl(`/users?page=${nextPage}`)
+    //1 variant
+    // this.router.navigateByUrl(`/users?page=${nextPage}`)
+    //   .then(() => {
+    //     this.getUsers(nextPage)
+    //   })
+
+    //2 variant
+    this.router.navigate(['/users'],{queryParams:{page:nextPage,}})
       .then(() => {
-        this.getUsers(nextPage)
-      })
+          this.getUsers(nextPage)
+        })
   }
 }
