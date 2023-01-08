@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 
@@ -28,16 +28,13 @@ export interface ProfileResponse  {
   providedIn: 'root'
 })
 export class ProfileService {
-  httpOptions = {
-    withCredentials: true,
-    headers: new HttpHeaders().append('api-key', environment.apiKey)
-  }
+
 
   constructor(private http: HttpClient) {
   }
 
   getUsersProfile(userId: number): Observable<ProfileResponse> {
     return this.http
-      .get<ProfileResponse>(`${environment.baseNetUrl}profile/${userId}`, this.httpOptions)
+      .get<ProfileResponse>(`${environment.baseNetUrl}profile/${userId}`)
   }
 }
