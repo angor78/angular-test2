@@ -37,3 +37,7 @@ import {CredentialsInterceptor} from "./interceptors/credentials.interceptor";
 })
 export class AppModule {
 }
+//app module
+//feature module
+//share module
+//core module
