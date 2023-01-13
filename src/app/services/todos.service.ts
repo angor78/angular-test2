@@ -29,10 +29,12 @@ export class TodosService {
               private coolLoggerService: CoolLoggerService) {
   }
 
-  getTodos():Observable<Todo[]> {
+  getTodos(): Observable<Todo[]> {
     return this.http
       .get<Todo[]>(`${environment.baseUrl}todo-lists`)
-      .pipe(map(el=>el))
+      .pipe(
+        catchError(this.errorHandler.bind(this)),
+        map(el => el))
   }
 
   addTodo(title: string) {
@@ -54,8 +56,8 @@ export class TodosService {
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map(() => {
-        return this.todos$.getValue().filter(el => el.id !== todoId)
-      })).subscribe((todos: Todo[]) => {
+          return this.todos$.getValue().filter(el => el.id !== todoId)
+        })).subscribe((todos: Todo[]) => {
       this.todos$.next(todos)
     })
   }
