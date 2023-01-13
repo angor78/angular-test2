@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {BehaviorSubject, catchError, EMPTY, map} from "rxjs";
+import {BehaviorSubject, catchError, EMPTY, map, Observable} from "rxjs";
 import {CoolLoggerService} from "./cool-logger.service";
 
 export interface Todo {
@@ -25,27 +25,19 @@ export class TodosService {
 
   todos$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([])
 
-  httpOptions = {
-    withCredentials: true,
-    headers: {'api-key': environment.apiKey}
-  }
-
   constructor(private http: HttpClient,
               private coolLoggerService: CoolLoggerService) {
   }
 
-  getTodos() {
-    this.http.get<Todo[]>(`${environment.baseUrl}todo-lists`,
-      this.httpOptions)
-      .pipe(catchError(this.errorHandler.bind(this)))
-      .subscribe((res) => {
-        this.todos$.next(res)
-      })
+  getTodos():Observable<any> {
+    return this.http
+      .get<any>(`${environment.baseUrl}todo-lists`)
+      .pipe(map(el=>el))
   }
 
   addTodo(title: string) {
     this.http.post<BaseResponse<{ item: Todo }>>(`${environment.baseUrl}todo-lists`,
-      {title: title}, this.httpOptions)
+      {title: title})
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map((res: BaseResponse<{ item: Todo }>) => {
@@ -58,8 +50,7 @@ export class TodosService {
 
 
   removeTodo(todoId: string) {
-    this.http.delete<BaseResponse>(`${environment.baseUrl}todo-lists/${todoId}`,
-      this.httpOptions)
+    this.http.delete<BaseResponse>(`${environment.baseUrl}todo-lists/${todoId}`)
       .pipe(
         catchError(this.errorHandler.bind(this)),
         map(() => {
