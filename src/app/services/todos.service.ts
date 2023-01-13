@@ -29,9 +29,9 @@ export class TodosService {
               private coolLoggerService: CoolLoggerService) {
   }
 
-  getTodos():Observable<any> {
+  getTodos():Observable<Todo[]> {
     return this.http
-      .get<any>(`${environment.baseUrl}todo-lists`)
+      .get<Todo[]>(`${environment.baseUrl}todo-lists`)
       .pipe(map(el=>el))
   }
 
