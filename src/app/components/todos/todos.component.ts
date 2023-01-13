@@ -8,7 +8,9 @@ import {Observable} from "rxjs";
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
+
   todos$ !: Observable<Todo[]>
+
   constructor(private todosService: TodosService) { }
 
   ngOnInit(): void {

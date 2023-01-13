@@ -9,6 +9,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+
   users$ !: Observable<User[]>
 
   constructor(

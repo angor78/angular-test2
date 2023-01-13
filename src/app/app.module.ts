@@ -13,6 +13,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {CredentialsInterceptor} from "./interceptors/credentials.interceptor";
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {CredentialsInterceptor} from "./interceptors/credentials.interceptor";
     UsersComponent,
     ProfileComponent,
     NotFoundComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
