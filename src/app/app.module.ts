@@ -5,15 +5,15 @@ import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ValueService} from "./services/value.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {HomeComponent} from './components/home/home.component';
-import {LoginComponent} from './components/login/login.component';
-import {TodosComponent} from './components/todos/todos.component';
-import {UsersComponent} from './components/users/users.component';
-import {ProfileComponent} from './components/profile/profile.component';
-import {NotFoundComponent} from './components/not-found/not-found.component';
+import {HomeComponent} from './home/components/home/home.component';
+import {LoginComponent} from './auth/components/login/login.component';
+import {TodosComponent} from './todos/components/todos/todos.component';
+import {UsersComponent} from './users/components/users/users.component';
+import {ProfileComponent} from './profile/components/profile/profile.component';
+import {NotFoundComponent} from './share/components/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {CredentialsInterceptor} from "./interceptors/credentials.interceptor";
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { NavigationComponent } from './share/components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
