@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject, catchError, EMPTY, map, Observable} from "rxjs";
-import {CoolLoggerService} from "../../services/cool-logger.service";
+import {CoolLoggerService} from "../../core/services/cool-logger.service";
 
 export interface Todo {
   addedDate: string
