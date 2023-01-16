@@ -3,20 +3,9 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject, catchError, EMPTY, map, Observable} from "rxjs";
 import {CoolLoggerService} from "../../core/services/cool-logger.service";
+import {Todo} from "../models/todos.model";
+import {BaseResponse} from "../../share/models/shared.model";
 
-export interface Todo {
-  addedDate: string
-  id: string
-  order: number
-  title: string
-}
-
-export interface BaseResponse<T = {}> {
-  data: T
-  fieldsErrors: string[]
-  messages: string[]
-  resultCode: number
-}
 
 @Injectable({
   providedIn: 'root'
