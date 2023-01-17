@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ValueService} from "./core/services/value.service";
@@ -9,12 +8,12 @@ import {NotFoundComponent} from './share/components/not-found/not-found.componen
 import {AppRoutingModule} from "./app-routing.module";
 import {CredentialsInterceptor} from "./core/interceptors/credentials.interceptor";
 import {TodosModule} from "./todos/todos.module";
-import {UsersModule} from "./users/users.module";
 import {CoreModule} from "./core/core.module";
 import {ProfileModule} from "./profile/profile.module";
 import {ShareModule} from "./share/share.module";
 import {AuthModule} from "./auth/auth.module";
 import {HomeModule} from "./home/home.module";
+import {UsersModule} from "./users/users.module";
 
 @NgModule({
   declarations: [
@@ -28,14 +27,13 @@ import {HomeModule} from "./home/home.module";
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-
     TodosModule,
     UsersModule,
     CoreModule,
     ProfileModule,
     AuthModule,
     HomeModule,
-    ShareModule
+    ShareModule,
   ],
   providers: [ValueService, {provide: HTTP_INTERCEPTORS, useClass: CredentialsInterceptor, multi: true}],
   bootstrap: [AppComponent]
