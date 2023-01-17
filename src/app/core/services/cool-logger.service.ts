@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
+import {messageType} from '../models/core.model'
 
-type messageType = 'error' | 'success' | 'warning'
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CoolLoggerService {
 
   log(message: string, messageType: messageType) {

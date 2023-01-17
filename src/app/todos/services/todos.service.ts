@@ -4,7 +4,7 @@ import {environment} from "../../../environments/environment";
 import {BehaviorSubject, catchError, EMPTY, map, Observable} from "rxjs";
 import {CoolLoggerService} from "../../core/services/cool-logger.service";
 import {Todo} from "../models/todos.model";
-import {BaseResponse} from "../../share/models/shared.model";
+import {BaseResponse} from "../../core/models/core.model";
 
 
 @Injectable({

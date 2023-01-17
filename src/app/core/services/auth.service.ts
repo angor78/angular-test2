@@ -2,16 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AuthMeResponse} from "../models/core.model";
+import {resultCode} from "../enams/core.enams";
 
 
-enum resultCode {
-  success,
-  error
-}
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
   constructor(private http: HttpClient) {

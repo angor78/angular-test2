@@ -7,3 +7,12 @@ export interface AuthMeResponse {
     login: string
   }
 }
+export interface BaseResponse<T = {}> {
+  data: T
+  fieldsErrors: string[]
+  messages: string[]
+  resultCode: number
+}
+
+export type messageType = 'error' | 'success' | 'warning'
+
