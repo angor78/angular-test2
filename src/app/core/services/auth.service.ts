@@ -1,16 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {AuthMeResponse} from "../models/core.model";
 
-export interface AuthMeResponse {
-  resultCode: number
-  messages: string[]
-  data: {
-    id: number
-    email: string
-    login: string
-  }
-}
 
 enum resultCode {
   success,
