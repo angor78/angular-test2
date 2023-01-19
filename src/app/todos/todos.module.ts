@@ -3,10 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {TodosRoutingModule} from './todos-routing.module';
 import {TodosComponent} from "./components/todos/todos.component";
-import {HttpClientModule} from "@angular/common/http";
-import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AppRoutingModule} from "../app-routing.module";
 
 
 @NgModule({
@@ -15,11 +11,6 @@ import {AppRoutingModule} from "../app-routing.module";
   ],
   imports: [
     CommonModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
     TodosRoutingModule
   ],
   exports:[TodosComponent]

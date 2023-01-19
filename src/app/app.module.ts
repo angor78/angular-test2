@@ -4,13 +4,11 @@ import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
-import {TodosModule} from "./todos/todos.module";
 import {CoreModule} from "./core/core.module";
 import {ProfileModule} from "./profile/profile.module";
 import {ShareModule} from "./share/share.module";
 import {AuthModule} from "./auth/auth.module";
-import {HomeModule} from "./home/home.module";
-import {UsersModule} from "./users/users.module";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -18,16 +16,17 @@ import {UsersModule} from "./users/users.module";
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    TodosModule,
-    UsersModule,
+    // TodosModule,
+    // UsersModule,
     CoreModule,
     ProfileModule,
     AuthModule,
-    HomeModule,
+    // HomeModule,
     ShareModule,
   ],
   providers: [],

@@ -4,7 +4,7 @@ import {UsersComponent} from "./components/users/users.component";
 import {AuthGuard} from "../guards/auth.guard";
 
 const routes: Routes = [
-  {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+  {path: '', component: UsersComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
