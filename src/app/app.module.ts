@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {NotFoundComponent} from './share/components/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {TodosModule} from "./todos/todos.module";
 import {CoreModule} from "./core/core.module";
@@ -16,8 +15,6 @@ import {UsersModule} from "./users/users.module";
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
-
   ],
   imports: [
     BrowserModule,
